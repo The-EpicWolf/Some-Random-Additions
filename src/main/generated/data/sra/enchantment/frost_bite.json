@@ -1,0 +1,37 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.sra.frost_bite"
+  },
+  "effects": {
+    "minecraft:post_attack": [
+      {
+        "affected": "victim",
+        "effect": {
+          "type": "sra:frost_bite",
+          "duration": {
+            "type": "minecraft:linear",
+            "base": 0.4,
+            "per_level_above_first": 0.2
+          }
+        },
+        "enchanted": "attacker"
+      }
+    ]
+  },
+  "exclusive_set": "#sra:exclusive_set/ice",
+  "max_cost": {
+    "base": 60,
+    "per_level_above_first": 20
+  },
+  "max_level": 2,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 20
+  },
+  "slots": [
+    "hand"
+  ],
+  "supported_items": "#minecraft:enchantable/sword",
+  "weight": 2
+}

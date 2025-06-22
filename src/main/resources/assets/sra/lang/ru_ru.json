@@ -1,0 +1,9 @@
+{
+  "enchantment.sra.frost_bite": "Холодное лезвие",
+  "enchantment.sra.frozen": "Обморожение",
+  "effect.sra.freeze": "Заморозка",
+  "item.minecraft.tipped_arrow.effect.freeze": "Стрела заморозки",
+  "item.minecraft.potion.effect.freeze": "Зелье заморозки",
+  "item.minecraft.splash_potion.effect.freeze": "Взрывное зелье заморозки",
+  "item.minecraft.lingering_potion.effect.freeze": "Туманное зелье заморозки"
+}
