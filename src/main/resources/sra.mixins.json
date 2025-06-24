@@ -4,6 +4,7 @@
   "package": "com.epicwolf.sra.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "AnvilScreenHandlerMixin",
     "MaceMixin",
     "WitherMixin"
   ],
