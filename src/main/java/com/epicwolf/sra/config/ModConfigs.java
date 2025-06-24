@@ -15,6 +15,10 @@ public class ModConfigs {
 
     public static boolean ENABLE_NEW_POTIONS;
 
+    public static boolean ENABLE_WITHER_BUFF;
+
+    public static int ANVIL_MAX_LEVEL_COST;
+
     public static void registerConfigs() {
         configs = new ModConfigProvider();
         createConfigs();
@@ -29,6 +33,8 @@ public class ModConfigs {
         configs.addKeyValuePair(new Pair<>("EnableNewEnchantments", true), "boolean (does`nt work)");
         configs.addKeyValuePair(new Pair<>("EnableEntityRenaming", true), "boolean (client side)");
         configs.addKeyValuePair(new Pair<>("EnableNewPotions", true), "boolean");
+        configs.addKeyValuePair(new Pair<>("EnableWitherBuff", true), "boolean");
+        configs.addKeyValuePair(new Pair<>("AnvilMaxLevelCost", 80), "int (minecraft default is 40)");
     }
 
     public static void assignConfigs() {
@@ -36,6 +42,8 @@ public class ModConfigs {
         ENABLE_NEW_ENCHANTMENTS = CONFIG.getOrDefault("EnableNewEnchantments", true);
         ENABLE_ENTITY_RENAMING = CONFIG.getOrDefault("EnableEntityRenaming", true);
         ENABLE_NEW_POTIONS = CONFIG.getOrDefault("EnableNewPotions", true);
+        ENABLE_WITHER_BUFF = CONFIG.getOrDefault("EnableNewPotions", true);
+        ANVIL_MAX_LEVEL_COST = CONFIG.getOrDefault("AnvilMaxLevelCost", 40);
 
         System.out.println("All " + configs.getConfigsList().size() + " have been set properly");
     }
