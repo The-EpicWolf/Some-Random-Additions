@@ -4,6 +4,7 @@
   "package": "com.epicwolf.sra.client.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
+    "AnvilScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
