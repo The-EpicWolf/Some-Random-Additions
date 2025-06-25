@@ -5,8 +5,9 @@ import com.epicwolf.sra.effect.ModEffects;
 import com.epicwolf.sra.enchantment.ModEnchantments;
 import com.epicwolf.sra.potion.ModPotions;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
 
-public class Sra implements ModInitializer {
+public class Sra implements ModInitializer, PreLaunchEntrypoint {
 
     public static final String MOD_ID = "sra";
 
@@ -14,7 +15,6 @@ public class Sra implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        ModConfigs.registerConfigs();
 //        if (ModConfigs.ENABLE_NEW_ENCHANTMENTS) {
             ModEnchantments.bootstrap();
 //        }
@@ -22,5 +22,10 @@ public class Sra implements ModInitializer {
             ModEffects.initialize();
             ModPotions.initialize();
         }
+    }
+
+    @Override
+    public void onPreLaunch() {
+        ModConfigs.registerConfigs();
     }
 }

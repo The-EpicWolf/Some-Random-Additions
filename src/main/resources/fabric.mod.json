@@ -16,6 +16,7 @@
     "client": [
       "com.epicwolf.sra.client.SraClient"
     ],
+    "preLaunch": ["com.epicwolf.sra.Sra"],
     "main": [
       "com.epicwolf.sra.Sra"
     ]
