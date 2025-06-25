@@ -29,7 +29,7 @@ public class ModConfigs {
     }
 
     private static void createConfigs() {
-        configs.addKeyValuePair(new Pair<>("EnableMaceRebalance", true), "boolean (does`nt affect the breach enchantment)");
+        configs.addKeyValuePair(new Pair<>("EnableMaceRebalance", true), "boolean (doesn`t affect the breach enchantment)");
         configs.addKeyValuePair(new Pair<>("EnableNewEnchantments", true), "boolean (does`nt work)");
         configs.addKeyValuePair(new Pair<>("EnableEntityRenaming", true), "boolean (client side)");
         configs.addKeyValuePair(new Pair<>("EnableNewPotions", true), "boolean");
@@ -42,7 +42,7 @@ public class ModConfigs {
         ENABLE_NEW_ENCHANTMENTS = CONFIG.getOrDefault("EnableNewEnchantments", true);
         ENABLE_ENTITY_RENAMING = CONFIG.getOrDefault("EnableEntityRenaming", true);
         ENABLE_NEW_POTIONS = CONFIG.getOrDefault("EnableNewPotions", true);
-        ENABLE_WITHER_BUFF = CONFIG.getOrDefault("EnableNewPotions", true);
+        ENABLE_WITHER_BUFF = CONFIG.getOrDefault("EnableWitherBuff", true);
         ANVIL_MAX_LEVEL_COST = CONFIG.getOrDefault("AnvilMaxLevelCost", 40);
 
         System.out.println("All " + configs.getConfigsList().size() + " have been set properly");

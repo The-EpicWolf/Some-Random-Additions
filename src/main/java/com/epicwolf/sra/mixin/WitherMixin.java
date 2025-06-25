@@ -1,5 +1,6 @@
 package com.epicwolf.sra.mixin;
 
+import com.epicwolf.sra.config.ModConfigs;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -42,19 +43,23 @@ public abstract class WitherMixin extends HostileEntity {
      */
     @Overwrite
     public static DefaultAttributeContainer.Builder createWitherAttributes() {
-        return HostileEntity.createHostileAttributes().add(EntityAttributes.MAX_HEALTH, 400.0).add(EntityAttributes.MOVEMENT_SPEED, 0.8f).add(EntityAttributes.FLYING_SPEED, 0.8f).add(EntityAttributes.FOLLOW_RANGE, 40.0).add(EntityAttributes.ARMOR, 4.0);
+        int health = ModConfigs.ENABLE_WITHER_BUFF ? 400 : 300;
+        float speed = ModConfigs.ENABLE_WITHER_BUFF ? 0.8f : 0.6f;
+        return HostileEntity.createHostileAttributes().add(EntityAttributes.MAX_HEALTH, health).add(EntityAttributes.MOVEMENT_SPEED, speed).add(EntityAttributes.FLYING_SPEED, speed).add(EntityAttributes.FOLLOW_RANGE, 40.0).add(EntityAttributes.ARMOR, 4.0);
     }
 
     @Inject(method = "mobTick", at = @At("HEAD"))
     protected void tick(ServerWorld world, CallbackInfo ci) {
-        if (this.shouldRenderOverlay() && !this.halfHealthGoal) {
-            for (int i=0; i < 3; i++) {
-                WitherSkeletonEntity skeleton = new WitherSkeletonEntity(EntityType.WITHER_SKELETON, world);
-                skeleton.setStackInHand(Hand.MAIN_HAND, Items.STONE_SWORD.getDefaultStack());
-                skeleton.setPos(this.getX()+(Math.random()*2-1), this.getY(), this.getZ()+(Math.random()*2-1));
-                world.spawnEntity(skeleton);
+        if (ModConfigs.ENABLE_WITHER_BUFF) {
+            if (this.shouldRenderOverlay() && !this.halfHealthGoal) {
+                for (int i=0; i < 3; i++) {
+                    WitherSkeletonEntity skeleton = new WitherSkeletonEntity(EntityType.WITHER_SKELETON, world);
+                    skeleton.setStackInHand(Hand.MAIN_HAND, Items.STONE_SWORD.getDefaultStack());
+                    skeleton.setPos(this.getX()+(Math.random()*2-1), this.getY(), this.getZ()+(Math.random()*2-1));
+                    world.spawnEntity(skeleton);
+                }
+                this.setHalfHealthGoal(true);
             }
-            this.setHalfHealthGoal(true);
         }
     }
 
