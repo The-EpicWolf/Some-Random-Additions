@@ -11,8 +11,6 @@ public class Sra implements ModInitializer, PreLaunchEntrypoint {
 
     public static final String MOD_ID = "sra";
 
-//    public static Logger LOGGER;
-
     @Override
     public void onInitialize() {
 //        if (ModConfigs.ENABLE_NEW_ENCHANTMENTS) {

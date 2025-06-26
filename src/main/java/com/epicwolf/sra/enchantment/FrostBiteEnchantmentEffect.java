@@ -18,9 +18,6 @@ public record FrostBiteEnchantmentEffect() implements EnchantmentEntityEffect {
 
     public static EnchantmentLevelBasedValue duration;
 
-    public FrostBiteEnchantmentEffect() {
-    }
-
     public FrostBiteEnchantmentEffect(EnchantmentLevelBasedValue duration) {
         this();
     }

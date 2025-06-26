@@ -35,8 +35,7 @@ public class MaceMixin {
                     }
 
                     World var14 = livingEntity.getWorld();
-                    if (var14 instanceof ServerWorld) {
-                        ServerWorld serverWorld = (ServerWorld) var14;
+                    if (var14 instanceof ServerWorld serverWorld) {
                         cir.setReturnValue((float) (g + (double) EnchantmentHelper.getSmashDamagePerFallenBlock(serverWorld, livingEntity.getWeaponStack(), target, damageSource, 0.0F) * f));
                     } else {
                         cir.setReturnValue((float) g);

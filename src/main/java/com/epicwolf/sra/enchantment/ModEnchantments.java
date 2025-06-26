@@ -1,7 +1,6 @@
 package com.epicwolf.sra.enchantment;
 
 import com.epicwolf.sra.Sra;
-import com.epicwolf.sra.config.ModConfigs;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.effect.EnchantmentEntityEffect;

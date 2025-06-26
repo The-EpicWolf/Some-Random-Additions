@@ -1,6 +1,5 @@
 package com.epicwolf.sra.enchantment;
 
-import com.epicwolf.sra.config.ModConfigs;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceCondition;
@@ -68,7 +67,7 @@ public class EnchantmentGenerator extends FabricDynamicRegistryProvider {
                                     Enchantment.leveledCost(15, 9),
                                     Enchantment.leveledCost(65, 9),
                                     4,
-                                    new AttributeModifierSlot[]{AttributeModifierSlot.MAINHAND})).exclusiveSet(registries.getOrThrow(RegistryKeys.ENCHANTMENT).getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE_SET))
+                                    AttributeModifierSlot.MAINHAND)).exclusiveSet(registries.getOrThrow(RegistryKeys.ENCHANTMENT).getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE_SET))
                     .addEffect(
                             EnchantmentEffectComponentTypes.ARMOR_EFFECTIVENESS,
                             new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(-0.09F))));

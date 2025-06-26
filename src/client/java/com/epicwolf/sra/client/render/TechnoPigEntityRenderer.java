@@ -28,7 +28,7 @@ import java.util.Map;
 public class TechnoPigEntityRenderer extends MobEntityRenderer<PigEntity, TechnoPigEntityRenderState, TechnoPigEntityModel> {
 
     private static final Identifier TECHNOBLADE_TEXTURE = Identifier.ofVanilla("textures/entity/pig/technoblade.png");
-    private final EnumMap modelPairs;
+    private final EnumMap<PigVariant.Model, BabyModelPair<TechnoPigEntityModel>> modelPairs;
 
     public TechnoPigEntityRenderer(EntityRendererFactory.Context context) {
         super(context, new TechnoPigEntityModel(context.getPart(SraClient.TECHNOBLADE_PIG)), 0.7F);
@@ -36,13 +36,13 @@ public class TechnoPigEntityRenderer extends MobEntityRenderer<PigEntity, Techno
         this.addFeature(new SaddleFeatureRenderer<>(this, context.getEquipmentRenderer(), EquipmentModel.LayerType.PIG_SADDLE, (pigEntityRenderState) -> pigEntityRenderState.saddleStack, new TechnoPigEntityModel(context.getPart(EntityModelLayers.PIG_SADDLE)), new TechnoPigEntityModel(context.getPart(EntityModelLayers.PIG_BABY_SADDLE))));
     }
 
-    private static EnumMap createModelPairs(EntityRendererFactory.Context context) {
-        return Maps.newEnumMap(Map.of(PigVariant.Model.NORMAL, new BabyModelPair(new TechnoPigEntityModel(context.getPart(SraClient.TECHNOBLADE_PIG)), new TechnoPigEntityModel(context.getPart(SraClient.TECHNOBLADE_PIG_BABY))), PigVariant.Model.COLD, new BabyModelPair(new TechnoPigEntityModel(context.getPart(SraClient.TECHNOBLADE_COLD_PIG)), new TechnoPigEntityModel(context.getPart(SraClient.TECHNOBLADE_COLD_PIG_BABY)))));
+    private static EnumMap<PigVariant.Model, BabyModelPair<TechnoPigEntityModel>> createModelPairs(EntityRendererFactory.Context context) {
+        return Maps.newEnumMap(Map.of(PigVariant.Model.NORMAL, new BabyModelPair<>(new TechnoPigEntityModel(context.getPart(SraClient.TECHNOBLADE_PIG)), new TechnoPigEntityModel(context.getPart(SraClient.TECHNOBLADE_PIG_BABY))), PigVariant.Model.COLD, new BabyModelPair<>(new TechnoPigEntityModel(context.getPart(SraClient.TECHNOBLADE_COLD_PIG)), new TechnoPigEntityModel(context.getPart(SraClient.TECHNOBLADE_COLD_PIG_BABY)))));
     }
 
     public void render(TechnoPigEntityRenderState pigEntityRenderState, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
         if (pigEntityRenderState.variant != null) {
-            this.model = (TechnoPigEntityModel) ((BabyModelPair)this.modelPairs.get(pigEntityRenderState.variant.modelAndTexture().model())).get(pigEntityRenderState.baby);
+            this.model = (TechnoPigEntityModel) ((BabyModelPair<?>)this.modelPairs.get(pigEntityRenderState.variant.modelAndTexture().model())).get(pigEntityRenderState.baby);
             super.render(pigEntityRenderState, matrixStack, vertexConsumerProvider, i);
         }
     }
@@ -63,7 +63,7 @@ public class TechnoPigEntityRenderer extends MobEntityRenderer<PigEntity, Techno
     public void updateRenderState(PigEntity pigEntity, TechnoPigEntityRenderState pigEntityRenderState, float f) {
         super.updateRenderState(pigEntity, pigEntityRenderState, f);
         pigEntityRenderState.saddleStack = pigEntity.getEquippedStack(EquipmentSlot.SADDLE).copy();
-        pigEntityRenderState.variant = (PigVariant)pigEntity.getVariant().value();
+        pigEntityRenderState.variant = pigEntity.getVariant().value();
         pigEntityRenderState.isTechnoblade = "Technoblade".equals(Formatting.strip(pigEntity.getName().getString()));
     }
 }

@@ -58,7 +58,7 @@ public class AnvilScreenHandlerMixin extends ForgingScreenHandler {
         ItemStack itemStack2 = itemStack.copy();
         ItemStack itemStack3 = this.input.getStack(1);
         ItemEnchantmentsComponent.Builder builder = new ItemEnchantmentsComponent.Builder(EnchantmentHelper.getEnchantments(itemStack2));
-        l += (long)itemStack.getOrDefault(DataComponentTypes.REPAIR_COST, 0).intValue() + (long)itemStack3.getOrDefault(DataComponentTypes.REPAIR_COST, 0).intValue();
+        l += (long) itemStack.getOrDefault(DataComponentTypes.REPAIR_COST, 0) + (long) itemStack3.getOrDefault(DataComponentTypes.REPAIR_COST, 0);
         this.repairItemUsage = 0;
         if (!itemStack3.isEmpty()) {
             boolean bl = itemStack3.contains(DataComponentTypes.STORED_ENCHANTMENTS);
@@ -102,10 +102,10 @@ public class AnvilScreenHandlerMixin extends ForgingScreenHandler {
                 boolean bl3 = false;
                 for (Object2IntMap.Entry<RegistryEntry<Enchantment>> entry : itemEnchantmentsComponent.getEnchantmentEntries()) {
                     int r;
-                    RegistryEntry registryEntry = (RegistryEntry)entry.getKey();
+                    RegistryEntry<Enchantment> registryEntry = entry.getKey();
                     int q = builder.getLevel(registryEntry);
                     r = q == (r = entry.getIntValue()) ? r + 1 : Math.max(r, q);
-                    Enchantment enchantment = (Enchantment)registryEntry.value();
+                    Enchantment enchantment = registryEntry.value();
                     boolean bl4 = enchantment.isAcceptableItem(itemStack);
                     if (this.player.isInCreativeMode() || itemStack.isOf(Items.ENCHANTED_BOOK)) {
                         bl4 = true;

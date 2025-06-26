@@ -9,7 +9,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.Potions;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 
 public class ModPotions {
@@ -26,7 +25,7 @@ public class ModPotions {
         FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> {
             builder.registerPotionRecipe(Potions.AWKWARD, Items.BLUE_ICE, Registries.POTION.getEntry(FREEZE));
             builder.registerPotionRecipe(Registries.POTION.getEntry(FREEZE), Items.REDSTONE, Registries.POTION.getEntry(LONG_FREEZE));
-            builder.registerPotionRecipe(Registries.POTION.getEntry(FREEZE), Items.GLOWSTONE_DUST, Registries.POTION.getEntry(STRONG_FREEZE));;
+            builder.registerPotionRecipe(Registries.POTION.getEntry(FREEZE), Items.GLOWSTONE_DUST, Registries.POTION.getEntry(STRONG_FREEZE));
         });
     }
 }
